@@ -47,7 +47,7 @@ public class Program
         string inputSelection = Console.ReadLine();
         Console.ResetColor();
 
-        if (!string.IsNullOrWhiteSpace(inputSelection))
+        if (string.IsNullOrWhiteSpace(inputSelection) == false)
             tasks.Add(new TaskItem(tasks.Count + 1, inputSelection));
         else
             Console.WriteLine("\nEmpty input. Task not added.");
@@ -79,7 +79,7 @@ public class Program
         ConsoleOutput();
 
         Console.Write("\nEnter task number to mark completed: ");
-        if (!int.TryParse(Console.ReadLine(), out int id))
+        if (int.TryParse(Console.ReadLine(), out int id) == false)
             Console.WriteLine("\nInvalid number.");
         else
         {
@@ -92,7 +92,7 @@ public class Program
                 Console.ResetColor();
             }
             else
-                Console.WriteLine($"\nTask not found.");
+                Console.WriteLine("\nTask not found.");
         }
 
         Console.Write("\nPress any key to continue...");
@@ -115,7 +115,7 @@ public class Program
 
         Console.Write("\nEnter task number to delete: ");
         
-        if (!int.TryParse(Console.ReadLine(), out int id))
+        if (int.TryParse(Console.ReadLine(), out int id) == false)
             Console.WriteLine("\nInvalid number.");
         else
         {
@@ -150,10 +150,7 @@ public class Program
         
         foreach (var task in tasks)
         {
-            if (task.IsCompleted)
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-            else
-                Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = task.IsCompleted ? ConsoleColor.DarkCyan : ConsoleColor.White;
 
             Console.WriteLine($"#{task.Id} - {task.Text}");
         }
