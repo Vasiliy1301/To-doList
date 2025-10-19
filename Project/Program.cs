@@ -26,14 +26,17 @@ public class Program
             break;
         }
 
-        if (inputSelection == "1")
-            NewListItem();
-        else if (inputSelection == "2")
-            TodoListDisplay();
-        else if (inputSelection == "3")
-            CompletedTasks();
-        else if (inputSelection == "4")
-            DeleteTask();
+        switch (inputSelection)
+        {
+            case "1": NewListItem();
+                break;
+            case "2": TodoListDisplay();
+                break;
+            case "3": CompletedTasks();
+                break;
+            case "4": DeleteTask();
+                break;
+        }
 
         Console.Clear();
     }
